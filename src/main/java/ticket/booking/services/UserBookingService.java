@@ -25,15 +25,25 @@ public class UserBookingService {
 
     public UserBookingService(User user1) throws IOException {
         this.user = user1;
+        loadUser();    }
+
+    public UserBookingService() throws IOException{
+        loadUser();
+    }
+
+    public List<User> loadUser() throws IOException{
         File users = new File(USERS_PATH);
         userList = OBJECT_MAPPER.readValue(users, new TypeReference<List<User>>() {
         });
-    }
 
-    public Boolean loginUser() {
+        return userList;
+    };
+
+
+    public Boolean loginUser(String username, String password) {
         // we use optional to make sure even if we face null , it does not throw NPE (null pointer exception)
         Optional<User> foundUser = userList.stream().filter(user1 -> {
-            return user1.getName().equals(user.getName()) && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword());
+            return user1.getName().equals(username) && UserServiceUtil.checkPassword(password, user1.getHashedPassword());
         }).findFirst();
         return foundUser.isPresent();
     }
@@ -54,7 +64,14 @@ public class UserBookingService {
         OBJECT_MAPPER.writeValue(usersFile, userList);
     }
 
-    public void fetchBooking() {
+    public User getUserInfoByUsername(String username){
+        return userList.stream().filter(user -> user.getName().equals(username))
+                .findFirst()
+                .orElse(null);
+    }
+
+
+    public void fetchBooking(User user) {
         user.printTickets();
     }
 
