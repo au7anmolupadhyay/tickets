@@ -15,7 +15,7 @@ public class App
     public static void main( String[] args )
     {
         System.out.println("running system!");
-        Boolean isUserLoggedIn = false;
+        boolean isUserLoggedIn = false;
         User loggedInUser = null;
         int option = 0;
 
