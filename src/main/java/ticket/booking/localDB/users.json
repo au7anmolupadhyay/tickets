@@ -22,5 +22,29 @@
         }
       }
     ]
+  },
+  {
+    "user_id": "abcdef",
+    "name": "Harshi Dogra",
+    "hashed_password" : "12345",
+    "tickets_booked" : [
+      {
+        "source": "Kashipur",
+        "destination": "Bangalore",
+        "date_of_travel" : "2025-10-04T18:30:00Z",
+        "train": {
+          "train_id" : "basdc",
+          "trian_no" : 12344,
+          "seats": [
+            [0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]
+          ],
+          "stations": {
+            "Bangalore" : "13:42:32",
+            "Jaipur" : "12:52:35",
+            "Delhi" : "21:34:14"
+          }
+        }
+      }
+    ]
   }
 ]
