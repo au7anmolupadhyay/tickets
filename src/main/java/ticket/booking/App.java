@@ -37,7 +37,7 @@ public class App
             System.out.println("4. Search Trains");
             System.out.println("5. Book a seat");
             System.out.println("6. Cancel my booking");
-            System.out.println("7. Exit the app");
+//            System.out.println("7. Exit the app");
 
             option = scanner.nextInt();
 
