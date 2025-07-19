@@ -1,15 +1,28 @@
 package ticket.booking.entities;
 
-import java.sql.Date;
-import java.sql.Time;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Date;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ticket {
+
+    @JsonProperty("ticket_id")
     private String ticketId;
+
+    @JsonProperty("user_id")
     private String userId;
+
     private String source;
     private String destination;
+
+    @JsonProperty("date_of_travel")
     private Date dateOfTravel;
+
     private Train train;
+
+    public Ticket() {} // Default constructor for Jackson as it is required to create no-args constructor
 
     public Ticket(String ticketId, Train train, Date dateOfTravel, String destination, String source, String userId) {
         this.ticketId = ticketId;
@@ -68,8 +81,8 @@ public class Ticket {
         this.userId = userId;
     }
 
-    public String getTicketInfo(){
-        return String.format("Ticket ID: %s belongs to User %s from %s to %s on %s", ticketId, userId, source, destination, dateOfTravel);
+    public String getTicketInfo() {
+        return String.format("Ticket ID: %s belongs to User %s from %s to %s on %s",
+                ticketId, userId, source, destination, dateOfTravel);
     }
-
 }

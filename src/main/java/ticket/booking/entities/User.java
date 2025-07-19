@@ -60,8 +60,13 @@ public class User {
     }
 
     public void printTickets(){
-        for(int i = 0; i< tickets_booked.size(); i++){
-            System.out.println(tickets_booked.get(i).getTicketInfo());
+        if(tickets_booked.isEmpty()){
+            System.out.println("No tickets booked...");
+        }
+        else {
+            for(int i = 0; i< tickets_booked.size(); i++){
+                System.out.println(tickets_booked.get(i).getTicketInfo());
+            }
         }
     }
 }

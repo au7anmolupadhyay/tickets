@@ -1,5 +1,6 @@
 package ticket.booking;
 
+import ticket.booking.entities.Train;
 import ticket.booking.entities.User;
 import ticket.booking.services.UserBookingService;
 import ticket.booking.util.UserServiceUtil;
@@ -52,6 +53,9 @@ public class App
                             UserServiceUtil.hashPassword(passwordToSignUp), UUID.randomUUID().toString(),
                             new ArrayList<>());
                     userBookingService.signUp(userToSignUp);
+                    loggedInUser = userBookingService.getUserInfoByUsername(nameToSignUp);
+                    isUserLoggedIn = true;
+                    System.out.println("Created your account");
                     break;
 
                 case 2:
@@ -78,6 +82,23 @@ public class App
                         userBookingService.fetchBooking(loggedInUser);
                         break;
                     }
+
+                case 4:
+                    System.out.println("Enter source: ");
+                    String source = scanner.next();
+                    System.out.println("Enter your destination: ");
+                    String destination = scanner.next();
+                    System.out.println("Searching trains ....");
+                    List<Train> trains = userBookingService.searchTrains(source, destination);
+
+                    if(trains.isEmpty()){
+                        System.out.println("No trains found!");
+                    }else{
+                        for(Train train: trains){
+                            System.out.println(train.getTrainsInfo());
+                        }
+                    }
+
             }
         }
 

@@ -3,6 +3,7 @@ package ticket.booking.services;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ticket.booking.entities.Ticket;
+import ticket.booking.entities.Train;
 import ticket.booking.entities.User;
 import ticket.booking.util.UserServiceUtil;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 public class UserBookingService {
     private User user;
+    private TrainService trainService;
 
     private List<User> userList;
 
@@ -29,6 +31,8 @@ public class UserBookingService {
 
     public UserBookingService() throws IOException{
         loadUser();
+        //composition (has a relationship that is why creating an object of the trainservice inside the constructor)
+        trainService = new TrainService();
     }
 
     public List<User> loadUser() throws IOException{
@@ -77,5 +81,9 @@ public class UserBookingService {
 
     public Boolean cancelBooking(Ticket ticketId) {
         return Boolean.FALSE;
+    }
+
+    public List<Train> searchTrains (String source, String destination){
+        return trainService.getTrains(source, destination);
     }
 }
