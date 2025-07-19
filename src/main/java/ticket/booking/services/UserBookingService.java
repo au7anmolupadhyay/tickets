@@ -43,7 +43,7 @@ public class UserBookingService {
     public Boolean loginUser(String username, String password) {
         // we use optional to make sure even if we face null , it does not throw NPE (null pointer exception)
         Optional<User> foundUser = userList.stream().filter(user1 -> {
-            return user1.getName().equals(username) && UserServiceUtil.checkPassword(password, user1.getHashedPassword());
+            return user1.getName().equals(username) && UserServiceUtil.checkPassword(password, user1.getHashed_password());
         }).findFirst();
         return foundUser.isPresent();
     }

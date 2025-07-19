@@ -26,6 +26,7 @@ public class App
             userBookingService = new UserBookingService();
         }catch(IOException ex){
             System.out.println("There is something wrong!");
+            ex.printStackTrace();
             return;
         }
 
@@ -58,11 +59,13 @@ public class App
                     String nameToLogin = scanner.next();
                     System.out.println("Enter your password: ");
                     String passwordToLogin = scanner.next();
-                    Boolean userLoggedIn = userBookingService.loginUser(nameToLogin, passwordToLogin);
-                    if(userLoggedIn){
+                    isUserLoggedIn = userBookingService.loginUser(nameToLogin, passwordToLogin);
+                    if(isUserLoggedIn){
                         loggedInUser = userBookingService.getUserInfoByUsername(nameToLogin);
+                        break;
                     }else{
                         System.out.println("Wrong username or password");
+                        break;
                     }
 
                 case 3:
@@ -73,6 +76,7 @@ public class App
                     else{
                         System.out.println("Fetching your bookings! .....");
                         userBookingService.fetchBooking(loggedInUser);
+                        break;
                     }
             }
         }

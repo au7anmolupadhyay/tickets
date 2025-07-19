@@ -5,16 +5,18 @@ import java.util.List;
 public class User {
     private String name;
     private String password;
-    private String hashedPassword;
-    private List<Ticket> ticketsBooked;
-    private String userId;
+    private String hashed_password;
+    private List<Ticket> tickets_booked;
+    private String user_id;
 
-    public User(String name, String password, String hashedPassword, String userId, List<Ticket> ticketsBooked){
+    public User(){}
+
+    public User(String name, String password, String hashed_password, String user_id, List<Ticket> tickets_booked){
         this.name = name;
         this.password = password;
-        this.hashedPassword = hashedPassword;
-        this.userId = userId;
-        this.ticketsBooked = ticketsBooked;
+        this.hashed_password = hashed_password;
+        this.user_id = user_id;
+        this.tickets_booked = tickets_booked;
     }
 
     public String getName() {
@@ -33,33 +35,33 @@ public class User {
         this.password = password;
     }
 
-    public String getHashedPassword() {
-        return hashedPassword;
+    public String getHashed_password() {
+        return hashed_password;
     }
 
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
+    public void setHashed_password(String hashed_password) {
+        this.hashed_password = hashed_password;
     }
 
-    public List<Ticket> getTicketsBooked() {
-        return ticketsBooked;
+    public List<Ticket> getTickets_booked() {
+        return tickets_booked;
     }
 
-    public void setTicketsBooked(List<Ticket> ticketsBooked) {
-        this.ticketsBooked = ticketsBooked;
+    public void setTickets_booked(List<Ticket> tickets_booked) {
+        this.tickets_booked = tickets_booked;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public void printTickets(){
-        for(int i=0; i<ticketsBooked.size(); i++){
-            System.out.println(ticketsBooked.get(i).getTicketInfo());
+        for(int i = 0; i< tickets_booked.size(); i++){
+            System.out.println(tickets_booked.get(i).getTicketInfo());
         }
     }
 }
